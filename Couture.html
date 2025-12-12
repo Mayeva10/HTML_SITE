@@ -15,13 +15,21 @@
                 <span class="scissors-icon">✂️</span>
                 <span class="logo-text">Atelier Couture</span>
             </div>
-            <div class="nav-links">
+            
+            <!-- Bouton Toggle pour Mobile -->
+            <button class="menu-toggle" id="menuToggle" aria-label="Toggle menu">
+                <span class="hamburger-line"></span>
+                <span class="hamburger-line"></span>
+                <span class="hamburger-line"></span>
+            </button>
+            
+            <div class="nav-links" id="navLinks">
                 <a href="#services">Services</a>
                 <a href="#catalogue">Catalogue</a>
                 <a href="#temoignages">Témoignages</a>
                 <a href="#contact">Contact</a>
             </div>
-            <button class="btn-primary">Prendre RDV</button>
+            <button class="btn-primary btn-rdv">Prendre RDV</button>
         </nav>
     </header>
 
@@ -201,5 +209,8 @@
             <p>Artisan couturier professionnel</p>
         </div>
     </footer>
+    
+    <!-- Script pour le menu toggle -->
+    <script src="Couture.js"></script>
 </body>
 </html>

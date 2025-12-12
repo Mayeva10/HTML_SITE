@@ -5,11 +5,12 @@
     box-sizing: border-box;
 }
 
-body {
+html, body {
     font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
     line-height: 1.6;
     color: #1a2332;
     background-color: #ffffff;
+    width: 100%;
 }
 
 .container {
@@ -78,6 +79,43 @@ body {
 .btn-primary:hover {
     background-color: #f0c97a;
 }
+
+/* Menu Toggle (Hamburger) - Caché par défaut sur desktop */
+.menu-toggle {
+    display: none;
+    flex-direction: column;
+    justify-content: space-around;
+    width: 2rem;
+    height: 2rem;
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    padding: 0;
+    z-index: 1001;
+}
+
+.hamburger-line {
+    width: 2rem;
+    height: 0.25rem;
+    background-color: white;
+    border-radius: 0.25rem;
+    transition: all 0.3s ease;
+    transform-origin: center;
+}
+
+/* Animation du hamburger quand le menu est ouvert */
+.menu-toggle.active .hamburger-line:nth-child(1) {
+    transform: translateY(0.625rem) rotate(45deg);
+}
+
+.menu-toggle.active .hamburger-line:nth-child(2) {
+    opacity: 0;
+}
+
+.menu-toggle.active .hamburger-line:nth-child(3) {
+    transform: translateY(-0.625rem) rotate(-45deg);
+}
+
 
 /* Hero Section */
 .hero {
@@ -395,12 +433,87 @@ body {
     margin-top: 0.5rem;
 }
 
+
+/* Responsive pour très petits écrans */
+@media (max-width: 480px) {
+    .nav-container {
+        padding: 0.75rem 1rem;
+    }
+    
+    .logo {
+        font-size: 1rem;
+    }
+    
+    .scissors-icon {
+        font-size: 1.25rem;
+    }
+    
+    .hero h1 {
+        font-size: 1.75rem;
+    }
+    
+    .hero p {
+        font-size: 1rem;
+    }
+    
+    .section-header h2 {
+        font-size: 1.75rem;
+    }
+    
+    .section-header p {
+        font-size: 1rem;
+    }
+}
+
 /* Responsive */
 @media (max-width: 768px) {
+    /* Afficher le bouton toggle sur mobile */
+    .menu-toggle {
+        display: flex;
+    }
+    
+    /* Transformer la navigation en menu mobile */
     .nav-links {
+        position: absolute;
+        top: 100%;
+        left: 0;
+        right: 0;
+        background-color: #1a3a5c;
+        flex-direction: column;
+        gap: 0;
+        padding: 0;
+        max-height: 0;
+        overflow: hidden;
+        transition: max-height 0.3s ease-in-out, padding 0.3s ease-in-out;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    }
+    
+    /* Menu ouvert */
+    .nav-links.active {
+        max-height: 300px;
+        padding: 1rem 0;
+    }
+    
+    .nav-links a {
+        padding: 1rem 1.5rem;
+        border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        transition: background-color 0.3s;
+    }
+    
+    .nav-links a:hover {
+        background-color: rgba(230, 184, 92, 0.1);
+    }
+    
+    .nav-links a:last-child {
+        border-bottom: none;
+    }
+    
+    /* Masquer le bouton RDV sur mobile */
+    .btn-rdv {
         display: none;
     }
     
+    /* Ajuster le hero */
     .hero h1 {
         font-size: 2rem;
     }
@@ -409,7 +522,10 @@ body {
         font-size: 1.125rem;
     }
     
+    /* Ajuster les titres de section */
     .section-header h2 {
         font-size: 2rem;
     }
 }
+
+
